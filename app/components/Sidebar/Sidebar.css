@@ -1,0 +1,22 @@
+.sidebar-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  background: white;
+  z-index: 1000;
+}
+
+.sidebar-toggle-button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  z-index: 1001;
+}
