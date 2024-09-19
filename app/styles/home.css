@@ -39,12 +39,27 @@ body {
   display: block;
 }
 
+.anthem_player_wrapper {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  padding: 10px 20px;
+  margin-left: 0.01rem;
+  z-index: 1;
+}
+
 @media (min-width: 769px) {
   .video_background {
     display: block;
   }
 
   .background_image {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .anthem_player_wrapper {
     display: none;
   }
 }

@@ -1,9 +1,11 @@
+import AnthemPlayer from "../components/AnthemPlayer/AnthemPlayer";
 import Header from "../components/Header/Header";
 import "../styles/home.css";
 
 const _index = () => {
   return (
     <div className="home">
+      <Header />
       <video className="video_background" loop autoPlay playsInline muted>
         <source
           src="https://static-content.azuki.com/assets/anime_trailer_3c951028-5466-4f8b-9e53-eaced0a9e0611.mp4"
@@ -15,7 +17,9 @@ const _index = () => {
         src="https://static-content.azuki.com/assets/anime_trailer_mobile_3c951028-5466-4f8b-9e53-eaced0a9e0611.jpg"
         alt=""
       />
-      <Header />
+      <div className="anthem_player_wrapper">
+        <AnthemPlayer />
+      </div>
     </div>
   );
 };
