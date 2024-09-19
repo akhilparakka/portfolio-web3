@@ -32,7 +32,7 @@ const Path = (props) => (
   />
 );
 
-export const Sidebar = () => {
+export const Sidebar = ({ navContents }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
 
@@ -43,8 +43,20 @@ export const Sidebar = () => {
       ref={containerRef}
       className="sidebar"
     >
-      <motion.div className="sidebar-background" variants={sidebar} />
-      <button className="sidebar-toggle-button" onClick={() => toggleOpen()}>
+      <motion.div className="sidebar_background" variants={sidebar}>
+        <nav className="nav-main">
+          <ul className="menu">
+            {navContents.map((item) => (
+              <li className="menu__item" key={item}>
+                <a className="menu__link" href=" ">
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </motion.div>
+      <button className="sidebar_toggle_button" onClick={() => toggleOpen()}>
         <svg width="23" height="23" viewBox="0 0 23 23">
           <Path
             variants={{

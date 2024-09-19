@@ -1,22 +1,178 @@
-.sidebar-background {
+@import url("https://fonts.googleapis.com/css?family=Rubik+Mono+One|Roboto+Mono:400,700&display=swap");
+
+:root {
+  --color-primary: #18181a;
+  --color-secondary: #75757c;
+  --color-dark: #364c62;
+  --color-light: #f5f5f5;
+  --font-family-primary: "Roboto Mono", monospace;
+  --font-family-secondary: "Rubik Mono One", sans-serif;
+
+  /* Global transition values */
+  --td: 150ms;
+  --te: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.sidebar_background {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   width: 100vw;
-  background: white;
+  background: #18181a;
   z-index: 1000;
 }
 
-.sidebar-toggle-button {
+.sidebar_toggle_button {
   outline: none;
   border: none;
   cursor: pointer;
   position: fixed;
-  top: 10px;
+  top: 8px;
   right: 20px;
   width: 50px;
   height: 50px;
   background: transparent;
   z-index: 1001;
+}
+
+.menu {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  z-index: 1;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menu > .menu__item {
+  font-family: var(--font-family-secondary);
+  font-size: 10vmin;
+  margin: 0 1rem;
+}
+
+/* ================================
+   Menu item
+   ================================ */
+
+.menu__item {
+  display: block;
+  position: relative;
+}
+
+.menu__item:hover .menu__link::before,
+.menu__item:hover .menu__link::after {
+  animation: blink 1s var(--td) steps(1, end) forwards infinite;
+  transform: translateX(calc(100% - 0.5rem));
+  transition-duration: calc(var(--td) * 3);
+}
+
+.menu__item:hover .menu__link::after {
+  transition-delay: calc(var(--td) / 2);
+}
+
+.menu__item:hover .submenu {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform calc(var(--td) * 2) calc(var(--td) * 3) var(--te),
+    opacity calc(var(--td) * 2) calc(var(--td) * 3) var(--te),
+    visibility 0s calc(var(--td) * 3);
+  visibility: visible;
+}
+
+/* ================================
+   Menu link
+   ================================ */
+
+.menu__link {
+  color: var(--color-dark);
+  display: inline-block;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 0.5rem 1rem 0.125rem;
+  position: relative;
+  text-decoration: none;
+  transition: color var(--td) var(--te), opacity var(--td) var(--te),
+    transform var(--td) var(--te);
+  z-index: 1;
+}
+
+.menu__link::before,
+.menu__link::after {
+  content: "";
+  background-color: var(--color-light);
+  height: 50%;
+  left: 0;
+  position: absolute;
+  transform: translateX(-110%);
+  transform-origin: 0 50%;
+  transition: transform 0s var(--te);
+  width: 100%;
+  z-index: -1;
+}
+
+.menu__link::before {
+  top: 0;
+}
+
+.menu__link::after {
+  bottom: 0;
+}
+
+/* ================================
+   Menu item hover styles
+   ================================ */
+
+.menu:not(:focus-within):not(:hover) .menu__item .menu__link {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.menu__item {
+  --pull: 30%;
+}
+
+.menu__item .menu__link {
+  opacity: 0.25;
+  transition-duration: calc(var(--td) * 3);
+  transform: translate(0, calc(var(--pull) * -1));
+}
+
+.menu__item .submenu .menu__link {
+  opacity: 1;
+}
+
+.menu__item:hover > .menu__link {
+  color: var(--color-secondary);
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.menu__item:hover > .menu__link:hover {
+  color: var(--color-light);
+  transition-delay: 0s;
+}
+
+.menu__item:hover ~ .menu__item > .menu__link {
+  transition-duration: calc(var(--td) * 3);
+  transform: translate(0, var(--pull));
+}
+
+/* ================================
+   Animations
+   ================================ */
+
+@keyframes blink {
+  50%,
+  100% {
+    opacity: 0;
+  }
 }

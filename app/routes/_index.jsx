@@ -1,5 +1,4 @@
 import Header from "../components/Header/Header";
-import Sidebar from "../components/Sidebar/Sidebar";
 import "../styles/home.css";
 
 const _index = () => {
@@ -11,8 +10,12 @@ const _index = () => {
           type="video/mp4"
         />
       </video>
+      <img
+        className="background_image"
+        src="https://static-content.azuki.com/assets/anime_trailer_mobile_3c951028-5466-4f8b-9e53-eaced0a9e0611.jpg"
+        alt=""
+      />
       <Header />
-      {/* <Sidebar /> */}
     </div>
   );
 };

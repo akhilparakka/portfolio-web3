@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px;
+  margin: 0.5rem;
   background-color: rgba(225, 29, 72, 10);
   border-radius: 10px;
   padding: 2px 8px 2px 8px;
@@ -39,7 +39,7 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  margin: 10px;
+  margin: 0.5rem;
 }
 
 .navbar_contents {
@@ -97,7 +97,13 @@
   .header_content {
     display: none;
   }
+}
 
+.sidebar_wrapper {
+  display: none;
+}
+
+@media (max-width: 768px) {
   .sidebar_wrapper {
     display: block;
   }

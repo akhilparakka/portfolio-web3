@@ -23,7 +23,7 @@ const Header = () => {
         </div>
       </div>
       <div className="sidebar_wrapper">
-        <Sidebar />
+        <Sidebar navContents={navbarContents} />
       </div>
     </header>
   );
