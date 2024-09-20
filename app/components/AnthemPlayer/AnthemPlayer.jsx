@@ -1,9 +1,81 @@
-import { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./AnthemPlayer.css";
 import { motion } from "framer-motion";
 
 const AnthemPlayer = () => {
   const [isSquare, setIsSquare] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState(1);
+  const [trackMetadata, setTrackMetadata] = useState({ title: "", artist: "" });
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    loadTrack(currentTrack);
+  }, [currentTrack]);
+
+  const loadTrack = async (trackNumber) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
+
+    // Fetch the metadata.json file
+    try {
+      const metadataResponse = await fetch(
+        `https://raw.githubusercontent.com/akhilparakka/solid-octo-music/main/songs/${trackNumber}/metadata.json`
+      );
+      if (metadataResponse.ok) {
+        const metadata = await metadataResponse.json();
+        setTrackMetadata(metadata);
+      } else {
+        console.error("Failed to load metadata");
+        setTrackMetadata({ title: "Unknown", artist: "Unknown" });
+      }
+    } catch (e) {
+      console.error("Error fetching metadata:", e);
+      setTrackMetadata({ title: "Unknown", artist: "Unknown" });
+    }
+
+    // Load the song
+    audioRef.current = new Audio(
+      `https://raw.githubusercontent.com/akhilparakka/solid-octo-music/main/songs/${trackNumber}/song.mp3`
+    );
+    audioRef.current.addEventListener(
+      "canplaythrough",
+      () => {
+        if (isPlaying) {
+          audioRef.current
+            .play()
+            .catch((e) => console.error("Error playing audio:", e));
+        }
+      },
+      { once: true }
+    );
+    audioRef.current.addEventListener("ended", () => changeTrack("next"));
+    audioRef.current.volume = 1;
+  };
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current
+          .play()
+          .catch((e) => console.error("Error playing audio:", e));
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const changeTrack = (direction) => {
+    setCurrentTrack((prev) => {
+      if (direction === "next") {
+        return prev === 2 ? 1 : prev + 1;
+      } else {
+        return prev === 1 ? 2 : prev - 1;
+      }
+    });
+  };
 
   const toggleShape = () => {
     setIsSquare(!isSquare);
@@ -47,7 +119,7 @@ const AnthemPlayer = () => {
           height: isSquare ? "80px" : "100px",
           top: isSquare ? "0px" : "-20px",
         }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
       />
       <motion.button
         style={{
@@ -81,17 +153,20 @@ const AnthemPlayer = () => {
         transition={{
           opacity: {
             duration: 0.1,
-            delay: isSquare ? 0 : 0.5,
+            delay: isSquare ? 0 : 0.3,
           },
         }}
         style={{ pointerEvents: isSquare ? "none" : "auto" }}
       >
         <div className="anthem_content_left">
-          <h3>BADDERS</h3>
-          <h4>PEEKABOO, Flowdan, Skrillex, G-Rex</h4>
+          <h3>{trackMetadata.title}</h3>
+          <h4>{trackMetadata.artist}</h4>
         </div>
         <div className="anthem_content_right">
-          <div className="buttons prev_button">
+          <div
+            className="buttons prev_button"
+            onClick={() => changeTrack("prev")}
+          >
             <svg
               stroke="currentColor"
               className="player_icon"
@@ -105,21 +180,39 @@ const AnthemPlayer = () => {
               <path d="m16 7-7 5 7 5zm-7 5V7H7v10h2z"></path>
             </svg>
           </div>
-          <div className="buttons play_button">
-            <svg
-              stroke="currentColor"
-              className="player_icon"
-              fill="white"
-              strokeWidth="0"
-              viewBox="0 0 24 24"
-              height="40"
-              width="40"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M7 6v12l10-6z"></path>
-            </svg>
+          <div className="buttons play_button" onClick={togglePlay}>
+            {isPlaying ? (
+              <svg
+                stroke="currentColor"
+                className="player_icon"
+                fill="white"
+                strokeWidth="0"
+                viewBox="0 0 24 24"
+                height="40"
+                width="40"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M8 7h3v10H8zm5 0h3v10h-3z"></path>
+              </svg>
+            ) : (
+              <svg
+                stroke="currentColor"
+                className="player_icon"
+                fill="white"
+                strokeWidth="0"
+                viewBox="0 0 24 24"
+                height="40"
+                width="40"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M7 6v12l10-6z"></path>
+              </svg>
+            )}
           </div>
-          <div className="buttons next_button">
+          <div
+            className="buttons next_button"
+            onClick={() => changeTrack("next")}
+          >
             <svg
               stroke="currentColor"
               className="player_icon"
