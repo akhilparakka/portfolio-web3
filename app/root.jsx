@@ -5,6 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <body>
         <Outlet />
         <ScrollRestoration />
+        <SpeedInsights />
         <Scripts />
       </body>
     </html>
