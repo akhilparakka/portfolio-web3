@@ -31,7 +31,22 @@ const coroselImages = [
   },
   {
     url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Forigin-of-the-garden.jpg&w=600&q=75",
-    title: "Origin of the Garder",
+    title: "Origin of the Garden",
+    subheading: "Interactive Lore",
+  },
+  {
+    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Forigin-of-the-garden.jpg&w=600&q=75",
+    title: "Origin of the Garden",
+    subheading: "Interactive Lore",
+  },
+  {
+    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Forigin-of-the-garden.jpg&w=600&q=75",
+    title: "Origin of the Garden",
+    subheading: "Interactive Lore",
+  },
+  {
+    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Forigin-of-the-garden.jpg&w=600&q=75",
+    title: "Origin of the Garden",
     subheading: "Interactive Lore",
   },
 ];

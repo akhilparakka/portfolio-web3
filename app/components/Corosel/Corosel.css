@@ -3,12 +3,14 @@
   height: 100%;
   display: flex;
   padding-left: 1.5rem;
+  padding-bottom: 2rem;
   background: rgba(235, 235, 230, 1);
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .corosel_images {
-  height: 100%;
+  height: 85%;
   width: auto;
   display: flex;
   gap: 1.5rem;
@@ -22,13 +24,17 @@
   content: "";
   flex: 0 0 auto;
   width: 0.8rem;
+  height: 100%;
 }
 
 .image_wrapper {
   flex: 0 0 auto;
-  height: 85%;
+  height: 100%;
   position: relative;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .corosel_image {
