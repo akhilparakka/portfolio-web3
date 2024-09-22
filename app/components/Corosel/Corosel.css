@@ -3,14 +3,13 @@
   height: 100%;
   display: flex;
   padding-left: 1.5rem;
-  padding-bottom: 2rem;
   background: rgba(235, 235, 230, 1);
   flex-direction: column;
   justify-content: space-around;
 }
 
 .corosel_images {
-  height: 85%;
+  height: 90%;
   width: auto;
   display: flex;
   gap: 1.5rem;
@@ -29,7 +28,7 @@
 
 .image_wrapper {
   flex: 0 0 auto;
-  height: 100%;
+  height: 90%;
   position: relative;
   cursor: pointer;
   display: flex;
@@ -100,5 +99,20 @@
   .corosel_images {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+}
+@media screen and (max-width: 767px) and (min-width: 481px) {
+  .corosel_images {
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .corosel_images {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .corosel {
+    padding-left: 1.2rem;
   }
 }

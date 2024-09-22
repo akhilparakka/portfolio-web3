@@ -30,24 +30,14 @@ const coroselImages = [
     subheading: "Physical Collectables",
   },
   {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Forigin-of-the-garden.jpg&w=600&q=75",
-    title: "Origin of the Garden",
-    subheading: "Interactive Lore",
+    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fbeanz-101.jpg&w=600&q=75",
+    title: "Benz 101",
+    subheading: "interactive Lore ipsum",
   },
   {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Forigin-of-the-garden.jpg&w=600&q=75",
-    title: "Origin of the Garden",
-    subheading: "Interactive Lore",
-  },
-  {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Forigin-of-the-garden.jpg&w=600&q=75",
-    title: "Origin of the Garden",
-    subheading: "Interactive Lore",
-  },
-  {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Forigin-of-the-garden.jpg&w=600&q=75",
-    title: "Origin of the Garden",
-    subheading: "Interactive Lore",
+    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fbrown-x-beanz-winter.jpg&w=600&q=75",
+    title: "Line Friends X Beans",
+    subheading: "Physical Collectables ipsum",
   },
 ];
 
@@ -56,7 +46,8 @@ const Corosel = () => {
 
   const handleScroll = (direction) => {
     const carousel = carouselRef.current;
-    const scrollAmount = carousel.clientWidth;
+    const imageWidth = carousel.querySelector(".image_wrapper").clientWidth;
+    const scrollAmount = carousel.clientWidth - imageWidth * 2;
 
     if (direction === "next") {
       carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
@@ -71,7 +62,7 @@ const Corosel = () => {
         {coroselImages.map((image) => (
           <motion.div
             className="image_wrapper"
-            key={image.url}
+            key={image.subheading}
             whileHover={{ y: -5 }}
           >
             <div className="heading_wrapper">
