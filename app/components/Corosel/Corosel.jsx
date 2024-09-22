@@ -1,21 +1,21 @@
-import { div } from "framer-motion/client";
 import Switch from "../Switch/Switch";
 import "./Corosel.css";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const coroselImages = [
   {
-    url: "	https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fwaiting-man.jpg&w=600&q=75",
+    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fwaiting-man.jpg&w=600&q=75",
     title: "The Waiting man",
     subheading: "Anthology Series",
   },
   {
-    url: "	https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fsisters.jpg&w=600&q=75",
+    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fsisters.jpg&w=600&q=75",
     title: "Sisters",
     subheading: "Story Animation",
   },
   {
-    url: "	https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fsatoshi.jpg&w=600&q=75",
+    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fsatoshi.jpg&w=600&q=75",
     title: "AZUKI X Satoshi Nakamoto",
     subheading: "Streetwear collab",
   },
@@ -37,9 +37,22 @@ const coroselImages = [
 ];
 
 const Corosel = () => {
+  const carouselRef = useRef(null);
+
+  const handleScroll = (direction) => {
+    const carousel = carouselRef.current;
+    const scrollAmount = carousel.clientWidth;
+
+    if (direction === "next") {
+      carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    } else {
+      carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="corosel">
-      <div className="corosel_images">
+      <div className="corosel_images" ref={carouselRef}>
         {coroselImages.map((image) => (
           <motion.div
             className="image_wrapper"
@@ -54,7 +67,10 @@ const Corosel = () => {
           </motion.div>
         ))}
       </div>
-      {/* <Switch /> */}
+      <div className="corosel_buttons">
+        <button onClick={() => handleScroll("prev")}>Prev</button>
+        <button onClick={() => handleScroll("next")}>Next</button>
+      </div>
     </div>
   );
 };
