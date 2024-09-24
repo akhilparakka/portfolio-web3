@@ -1,7 +1,6 @@
-import Switch from "../Switch/Switch";
 import "./Corosel.css";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const coroselImages = [
   {
@@ -43,18 +42,80 @@ const coroselImages = [
 
 const Corosel = () => {
   const carouselRef = useRef(null);
+  const [scrollInfo, setScrollInfo] = useState({
+    position: 0,
+    max: 0,
+    viewportWidth: 0,
+  });
+  const [totalSteps, setTotalSteps] = useState(1);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (carousel) {
+      const updateScrollInfo = () => {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        setScrollInfo({
+          position: carousel.scrollLeft,
+          max: maxScroll,
+          viewportWidth: carousel.clientWidth,
+        });
+      };
+
+      const calculateTotalSteps = () => {
+        const scrollStep = carousel.clientWidth - 100;
+        const steps = Math.ceil(carousel.scrollWidth / scrollStep);
+        setTotalSteps(Math.max(steps, 1));
+      };
+
+      updateScrollInfo();
+      calculateTotalSteps();
+
+      carousel.addEventListener("scroll", updateScrollInfo);
+      window.addEventListener("resize", () => {
+        updateScrollInfo();
+        calculateTotalSteps();
+      });
+
+      return () => {
+        carousel.removeEventListener("scroll", updateScrollInfo);
+        window.removeEventListener("resize", calculateTotalSteps);
+      };
+    }
+  }, []);
+
+  const activeIndex = useMemo(() => {
+    if (scrollInfo.max === 0) return 0;
+    return Math.round(
+      (scrollInfo.position / scrollInfo.max) * (totalSteps - 1)
+    );
+  }, [scrollInfo, totalSteps]);
 
   const handleScroll = (direction) => {
     const carousel = carouselRef.current;
-    const imageWidth = carousel.querySelector(".image_wrapper").clientWidth;
-    const scrollAmount = carousel.clientWidth - imageWidth * 2;
-
-    if (direction === "next") {
-      carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    } else {
-      carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    if (carousel) {
+      const scrollAmount = carousel.clientWidth - 100;
+      carousel.scrollBy({
+        left: direction === "next" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
+      });
     }
   };
+
+  const handleDotClick = (index) => {
+    const carousel = carouselRef.current;
+    if (carousel) {
+      const scrollStep = carousel.clientWidth - 100;
+      const targetScroll = index * scrollStep;
+      carousel.scrollTo({
+        left: targetScroll,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // Check if scrolling left or right is possible
+  const canScrollLeft = scrollInfo.position > 0;
+  const canScrollRight = scrollInfo.position < scrollInfo.max;
 
   return (
     <div className="corosel">
@@ -69,14 +130,47 @@ const Corosel = () => {
               <h3>{image.title}</h3>
               <p>{image.subheading}</p>
             </div>
-            <motion.img src={image.url} className="corosel_image" />
+            <motion.img
+              src={image.url}
+              alt={image.title}
+              className="corosel_image"
+            />
           </motion.div>
         ))}
       </div>
-      <div className="corosel_buttons">
-        <button onClick={() => handleScroll("prev")}>Prev</button>
-        <button onClick={() => handleScroll("next")}>Next</button>
-      </div>
+      {scrollInfo.viewportWidth > 0 && (
+        <div className="scroll_button_wrapper">
+          <div className="scroll_indicator">
+            <button
+              onClick={() => handleScroll("prev")}
+              className={`indicator_button ${!canScrollLeft ? "disabled" : ""}`}
+              disabled={!canScrollLeft}
+            >
+              &lt;
+            </button>
+            <div className="indicator_dots">
+              {[...Array(totalSteps)].map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleDotClick(index)}
+                  className={`indicator_dot ${
+                    index === activeIndex ? "active" : ""
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={() => handleScroll("next")}
+              className={`indicator_button ${
+                !canScrollRight ? "disabled" : ""
+              }`}
+              disabled={!canScrollRight}
+            >
+              &gt;
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
