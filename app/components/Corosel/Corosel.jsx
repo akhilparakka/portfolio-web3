@@ -113,7 +113,6 @@ const Corosel = () => {
     }
   };
 
-  // Check if scrolling left or right is possible
   const canScrollLeft = scrollInfo.position > 0;
   const canScrollRight = scrollInfo.position < scrollInfo.max;
 

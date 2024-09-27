@@ -8,18 +8,23 @@ const Header = () => {
   return (
     <header className="sticky_header">
       <div className="logo">
-        <img src={Azuki} alt="" />
+        <img src={Azuki} alt="" width={"80px"} />
       </div>
       <div className="header_content">
         <div className="navbar">
           <div className="navbar_contents">
-            {navbarContents.map((item) => (
-              <p key={item}>{item}</p>
-            ))}
+            <div className="connect_wallet">
+              <p></p>
+            </div>
+            <div className="navbar_links">
+              {navbarContents.map((item) => (
+                <p key={item}>{item}</p>
+              ))}
+            </div>
+            <div className="connect_wallet">
+              <p>Connect</p>
+            </div>
           </div>
-        </div>
-        <div className="connect_wallet">
-          <p>Connect</p>
         </div>
       </div>
       <div className="sidebar_wrapper">
