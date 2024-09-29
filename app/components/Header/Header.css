@@ -112,6 +112,9 @@
 }
 
 @media (max-width: 768px) {
+  .sticky_header {
+    padding: 12px;
+  }
   .sidebar_wrapper {
     display: block;
   }
