@@ -89,7 +89,7 @@ body {
   opacity: 0.1;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .video_background {
     display: block;
   }
@@ -110,5 +110,7 @@ body {
 
   .segments_wrapper {
     flex-direction: column;
+    overflow-x: hidden;
+    height: auto;
   }
 }

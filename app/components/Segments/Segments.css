@@ -1,12 +1,13 @@
 .anthology-section {
-  flex: 0.5;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  height: 100%;
-  width: 100%;
+  width: 50%;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .anthology-content {
@@ -14,26 +15,22 @@
   flex-direction: column;
   text-align: center;
   height: 100%;
-  align-items: center;
-  justify-content: space-between;
+  width: 100%;
 }
 
 .text-section {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.5rem;
   align-items: center;
-  padding: 0px 30px 30px 30px;
   text-align: center;
-  align-items: center;
-  justify-content: center;
-  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .title-description {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.75rem;
 }
 
 .anthology-title {
@@ -52,15 +49,15 @@
 .square-btn-white-small {
   display: flex;
   align-items: center;
-  padding: 12px 20px;
-  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
   text-transform: uppercase;
   border-radius: 9999px;
-  gap: 10px;
+  gap: 0.5rem;
   background-color: white;
   border: none;
   cursor: pointer;
-  font-weight: 600;
 }
 
 .square-btn-white-small .icon {
@@ -71,8 +68,40 @@
 .anthology-image {
   width: 100%;
   max-width: 800px;
+  height: auto;
+  object-fit: cover;
 }
 
-.highlighted-text {
-  font-weight: 500;
+@media (max-width: 768px) {
+  .anthology-section {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .anthology-title {
+    font-size: 1.25rem;
+  }
+
+  .anthology-description {
+    font-size: 0.875rem;
+  }
+
+  .square-btn-white-small {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .anthology-section {
+    padding: 4rem;
+  }
+
+  .anthology-title {
+    font-size: 1.75rem;
+  }
+
+  .anthology-description {
+    font-size: 1.125rem;
+  }
 }
