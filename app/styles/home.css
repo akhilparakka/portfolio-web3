@@ -79,6 +79,8 @@ body {
   height: 90vh;
   background-color: rgb(234, 235, 230);
   border: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .noise_overlay {
@@ -87,6 +89,15 @@ body {
   position: absolute;
   background: url("../assets/noise.jpg") repeat;
   opacity: 0.1;
+}
+
+.world_wrapper {
+  background-color: rgba(235, 235, 230, 1);
+  width: 100vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {

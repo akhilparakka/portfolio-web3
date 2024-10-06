@@ -99,29 +99,10 @@
     padding: 10px;
     max-width: 40rem;
   }
-
-  .custom_image {
-    display: block;
-    position: absolute;
-    width: 187px;
-    height: 250px;
-    right: -40px;
-    bottom: -75px;
-    z-index: 10;
-    transform: rotate(24deg);
-    border: 4px solid white;
-  }
 }
 
 @media screen and (max-width: 576px) {
   .home_banner {
     max-width: 90%;
-  }
-
-  .custom_image {
-    width: 187px;
-    height: 250px;
-    right: -40px;
-    bottom: -75px;
   }
 }

@@ -23,14 +23,6 @@ const Banner = () => {
               originates from web3 in the fast world of anime.
             </p>
             <br />
-            <p>
-              The Azuki community, through its creation of 100 subcommunities, a
-              vast collection of fan and commissioned art, multiple
-              community-led events around the world, and much more, has
-              emphatically shown that it's possible to birth a new IP that
-              originates from web3 in the fast world of anime.
-            </p>
-            <br />
             <p>We rise together. We build together. We grow together.</p>
             <p>AZUKI!</p>
           </div>

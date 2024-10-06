@@ -6,6 +6,7 @@ import Segment from "../components/Segments/Segments";
 import "../styles/home.css";
 import PrimaryImage from "../assets/azuki_section_tumbnail.jpg";
 import SecondaryImage from "../assets/azuki_section_tumbnail_sec.jpg";
+import World from "../components/World/World";
 
 const _index = () => {
   const segmentDetails = {
@@ -59,6 +60,9 @@ const _index = () => {
       <div className="segments_wrapper">
         <Segment details={segmentDetails.primary} />
         <Segment details={segmentDetails.secondary} />
+      </div>
+      <div className="world_wrapper">
+        <World />
       </div>
     </div>
   );
