@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import "./Sidebar.css";
-import { useAppKit } from "@reown/appkit/react";
+// import { useAppKit } from "@reown/appkit/react";
 
 const sidebar = {
   open: {
@@ -34,13 +34,13 @@ const Path = (props) => (
 );
 
 export const Sidebar = ({ navContents }) => {
-  const { open } = useAppKit();
+  // const { open } = useAppKit();
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
 
   const handleConnectClick = () => {
     toggleOpen(true);
-    open();
+    // open();
   };
 
   return (

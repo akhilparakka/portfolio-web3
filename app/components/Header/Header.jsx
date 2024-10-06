@@ -1,15 +1,15 @@
 import Sidebar from "../Sidebar/Sidebar";
 import "./Header.css";
 import Azuki from "../../assets/Azuki Logo White.svg";
-import { useAppKit } from "@reown/appkit/react";
-import { useAccount } from "wagmi";
+// import { useAppKit } from "@reown/appkit/react";
+// import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
 
 const navbarContents = ["About", "Akhil", "Lore", "More", "Social"];
 
 const Header = () => {
-  const { open } = useAppKit();
-  const { address } = useAccount();
+  // const { open } = useAppKit();
+  // const { address } = useAccount();
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
@@ -34,12 +34,13 @@ const Header = () => {
                 <p key={item}>{item}</p>
               ))}
             </div>
-            <div className="connect_wallet" onClick={handleConnectClick}>
-              <p>
+            <div className="connect_wallet" /*onClick={handleConnectClick}*/>
+              {/* <p>
                 {isHydrated && address
                   ? `${address.slice(0, 6)}...${address.slice(0, 6)}`
                   : "Connect"}
-              </p>
+              </p> */}
+              <p>Connect</p>
             </div>
           </div>
         </div>

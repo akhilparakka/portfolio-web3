@@ -73,6 +73,14 @@ body {
   background-color: rgba(221, 50, 63, 1);
 }
 
+.segments_wrapper {
+  display: flex;
+  width: 100%;
+  height: 90vh;
+  background-color: rgb(234, 235, 230);
+  border: 0;
+}
+
 .noise_overlay {
   width: 100%;
   height: inherit;
@@ -98,5 +106,9 @@ body {
 
   .corosel_wrapper {
     border-top: none;
+  }
+
+  .segments_wrapper {
+    flex-direction: column;
   }
 }
