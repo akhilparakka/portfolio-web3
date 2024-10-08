@@ -1,0 +1,69 @@
+.logos {
+  overflow: hidden;
+  padding: 60px 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logos::before,
+.logos::after {
+  position: absolute;
+  top: 0;
+  width: 10%;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.logos::before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.logos::after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+@keyframes slide-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.logos.left .logos-slide {
+  animation: 20s slide-left infinite linear;
+}
+
+.logos.right .logos-slide {
+  animation: 20s slide-right infinite linear;
+}
+
+/* .logos.left:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos.right:hover .logos-slide {
+  animation-play-state: paused;
+} */
+
+.logos-slide {
+  display: inline-block;
+}
+
+.logos-slide > img {
+  margin: 0 40px;
+  height: 100px;
+}

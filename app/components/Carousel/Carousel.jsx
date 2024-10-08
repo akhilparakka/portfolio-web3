@@ -1,8 +1,8 @@
-import "./Corosel.css";
+import "./Carousel.css";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-const coroselImages = [
+const carouselImages = [
   {
     url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fwaiting-man.jpg&w=600&q=75",
     title: "The Waiting man",
@@ -40,7 +40,7 @@ const coroselImages = [
   },
 ];
 
-const Corosel = () => {
+const Carousel = () => {
   const carouselRef = useRef(null);
   const [scrollInfo, setScrollInfo] = useState({
     position: 0,
@@ -119,7 +119,7 @@ const Corosel = () => {
   return (
     <div className="corosel">
       <div className="corosel_images" ref={carouselRef}>
-        {coroselImages.map((image) => (
+        {carouselImages.map((image) => (
           <motion.div
             className="image_wrapper"
             key={image.subheading}
@@ -174,4 +174,4 @@ const Corosel = () => {
   );
 };
 
-export default Corosel;
+export default Carousel;

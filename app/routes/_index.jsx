@@ -1,12 +1,13 @@
 import AnthemPlayer from "../components/AnthemPlayer/AnthemPlayer";
 import Banner from "../components/Banner/Banner";
-import Corosel from "../components/Corosel/Corosel";
+import Corosel from "../components/Carousel/Carousel";
 import Header from "../components/Header/Header";
 import Segment from "../components/Segments/Segments";
-import "../styles/home.css";
 import PrimaryImage from "../assets/azuki_section_tumbnail.jpg";
 import SecondaryImage from "../assets/azuki_section_tumbnail_sec.jpg";
 import World from "../components/World/World";
+import "../styles/home.css";
+import AutoCarousel from "../AutoCarousel/AutoCarousel";
 
 const _index = () => {
   const segmentDetails = {
@@ -23,6 +24,7 @@ const _index = () => {
       image: SecondaryImage,
     },
   };
+
   return (
     <div className="home">
       <div
@@ -63,6 +65,10 @@ const _index = () => {
       </div>
       <div className="world_wrapper">
         <World />
+      </div>
+      <div>
+        <AutoCarousel direction="left" />
+        <AutoCarousel direction="right" />
       </div>
     </div>
   );
