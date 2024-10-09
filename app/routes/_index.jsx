@@ -7,7 +7,7 @@ import PrimaryImage from "../assets/azuki_section_tumbnail.jpg";
 import SecondaryImage from "../assets/azuki_section_tumbnail_sec.jpg";
 import World from "../components/World/World";
 import "../styles/home.css";
-import AutoCarousel from "../AutoCarousel/AutoCarousel";
+import AutoCarousel from "../components/AutoCarousel/AutoCarousel";
 
 const _index = () => {
   const segmentDetails = {
@@ -66,7 +66,7 @@ const _index = () => {
       <div className="world_wrapper">
         <World />
       </div>
-      <div>
+      <div className="auto_carousel_wrapper">
         <AutoCarousel direction="left" />
         <AutoCarousel direction="right" />
       </div>

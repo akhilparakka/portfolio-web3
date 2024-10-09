@@ -1,0 +1,50 @@
+.card_wrapper {
+  display: inline-block;
+  margin: 10px;
+}
+
+.card {
+  width: 320px;
+  height: 320px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.card_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card:hover .card_image {
+  opacity: 0.6;
+}
+
+.card_title_popup {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background-color: rgba(0, 0, 0, 1);
+  padding: 10px 15px;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover .card_title_popup {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.popup_title {
+  margin: 0;
+  font-size: 1em;
+  text-align: center;
+}
