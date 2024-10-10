@@ -102,7 +102,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: rgba(23, 23, 23, 1);
-  padding: 3rem 0px;
+  padding: 2% 0px;
 }
 
 @media (min-width: 768px) {
@@ -128,5 +128,9 @@ body {
     flex-direction: column;
     overflow-x: hidden;
     height: auto;
+  }
+
+  .auto_carousel_wrapper {
+    padding: 1rem 0;
   }
 }

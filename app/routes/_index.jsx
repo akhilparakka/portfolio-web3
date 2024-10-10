@@ -8,8 +8,12 @@ import SecondaryImage from "../assets/azuki_section_tumbnail_sec.jpg";
 import World from "../components/World/World";
 import "../styles/home.css";
 import AutoCarousel from "../components/AutoCarousel/AutoCarousel";
+import useWindowSize from "../hooks/useWindowSize";
 
 const _index = () => {
+  const { width } = useWindowSize();
+  const isMobile = width <= 768;
+
   const segmentDetails = {
     primary: {
       title: "Anthology Series",
@@ -69,6 +73,7 @@ const _index = () => {
       <div className="auto_carousel_wrapper">
         <AutoCarousel direction="left" />
         <AutoCarousel direction="right" />
+        {isMobile && <AutoCarousel direction="left" />}
       </div>
     </div>
   );

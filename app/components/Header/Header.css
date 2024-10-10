@@ -16,10 +16,15 @@
   justify-content: center;
   margin: 0.5rem;
   margin-top: 0.7rem;
-  background-color: rgba(221, 50, 63, 1);
+  background-color: rgba(192, 53, 64, 1);
   border-radius: 10px;
   padding: 8px;
   z-index: 1001;
+}
+
+.logo:hover {
+  background-color: rgba(225, 29, 72, 1);
+  cursor: pointer;
 }
 
 .header_content {

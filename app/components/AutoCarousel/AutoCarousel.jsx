@@ -55,7 +55,11 @@ const AutoCarousel = ({ direction = "left" }) => {
       alt: "Tesla",
       title: "Tesla",
     },
-    { src: CoroselImage_8, alt: "Nike", title: "Google" },
+    {
+      src: CoroselImage_8,
+      alt: "Nike",
+      title: "Nike",
+    },
     {
       src: CoroselImage_9,
       alt: "Adidas",
