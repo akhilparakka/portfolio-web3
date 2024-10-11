@@ -9,6 +9,7 @@ import World from "../components/World/World";
 import "../styles/home.css";
 import AutoCarousel from "../components/AutoCarousel/AutoCarousel";
 import useWindowSize from "../hooks/useWindowSize";
+import Footer from "../components/Footer/Footer";
 
 const _index = () => {
   const { width } = useWindowSize();
@@ -53,9 +54,7 @@ const _index = () => {
           src="https://static-content.azuki.com/assets/anime_trailer_mobile_3c951028-5466-4f8b-9e53-eaced0a9e0611.jpg"
           alt=""
         />
-        <div className="anthem_player_wrapper">
-          <AnthemPlayer />
-        </div>
+        <div className="anthem_player_wrapper">{/* <AnthemPlayer /> */}</div>
       </div>
       <div className="corosel_wrapper">
         <Corosel />
@@ -74,6 +73,9 @@ const _index = () => {
         <AutoCarousel direction="left" />
         <AutoCarousel direction="right" />
         {isMobile && <AutoCarousel direction="left" />}
+      </div>
+      <div className="footer_wrapper">
+        <Footer />
       </div>
     </div>
   );

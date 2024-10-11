@@ -59,7 +59,7 @@ body {
 }
 
 .corosel_wrapper {
-  border-top: 10px solid rgba(221, 50, 63, 1);
+  border-top: 8px solid rgba(221, 50, 63, 1);
   height: 43rem;
   width: 100vw;
 }
@@ -103,6 +103,11 @@ body {
   flex-direction: column;
   background-color: rgba(23, 23, 23, 1);
   padding: 2% 0px;
+}
+
+.footer_wrapper {
+  width: 100vw;
+  height: 40vh;
 }
 
 @media (min-width: 768px) {
