@@ -14,8 +14,8 @@ const Footer = () => {
         <img src="https://www.azuki.com/shao-sitting.png" alt="" />
       </div>
       <div className="footer_right">
-        <div className="footer_right_container">
-          <div className="footer_right_content_box">
+        <div className="footer_container">
+          <div className="footer_content_box">
             <h4>About Us</h4>
             <p>Projects</p>
             <p>Team</p>
@@ -23,25 +23,25 @@ const Footer = () => {
             <p>Blog</p>
             <p>Communities</p>
           </div>
-          <div className="footer_right_content_box">
-            <h4>technology</h4>
+          <div className="footer_content_box">
+            <h4>Technology</h4>
             <p>pbt</p>
             <p>ERC721A</p>
           </div>
         </div>
-        <div className="footer_right_container">
-          <div className="footer_right_content_box">
+        <div className="footer_container">
+          <div className="footer_content_box">
             <h4>Lore</h4>
             <p>Anime</p>
           </div>
-          <div className="footer_right_content_box">
+          <div className="footer_content_box">
             <h4>Other</h4>
             <p>License</p>
-            <p>Termas & Conditions</p>
+            <p>Terms & Conditions</p>
           </div>
         </div>
-        <div className="footer_right_container">
-          <div className="footer_right_content_box">
+        <div className="footer_container">
+          <div className="footer_content_box">
             <h4>Socials</h4>
             <div className="footer_icons">
               <img
