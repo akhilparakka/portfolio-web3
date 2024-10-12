@@ -54,7 +54,7 @@ const _index = () => {
           src="https://static-content.azuki.com/assets/anime_trailer_mobile_3c951028-5466-4f8b-9e53-eaced0a9e0611.jpg"
           alt=""
         />
-        <div className="anthem_player_wrapper">{/* <AnthemPlayer /> */}</div>
+        <div className="anthem_player_wrapper">{<AnthemPlayer />}</div>
       </div>
       <div className="corosel_wrapper">
         <Corosel />
