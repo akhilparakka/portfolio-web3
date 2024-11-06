@@ -18,7 +18,6 @@ const AnthemPlayer = () => {
       audioRef.current.pause();
     }
 
-    // Fetch the metadata.json file
     try {
       const metadataResponse = await fetch(
         `https://raw.githubusercontent.com/akhilparakka/solid-octo-music/main/songs/${trackNumber}/metadata.json`
@@ -35,7 +34,6 @@ const AnthemPlayer = () => {
       setTrackMetadata({ title: "Unknown", artist: "Unknown" });
     }
 
-    // Load the song
     audioRef.current = new Audio(
       `https://raw.githubusercontent.com/akhilparakka/solid-octo-music/main/songs/${trackNumber}/song.mp3`
     );
@@ -70,9 +68,9 @@ const AnthemPlayer = () => {
   const changeTrack = (direction) => {
     setCurrentTrack((prev) => {
       if (direction === "next") {
-        return prev === 2 ? 1 : prev + 1;
+        return prev === 3 ? 1 : prev + 1;
       } else {
-        return prev === 1 ? 2 : prev - 1;
+        return prev === 1 ? 3 : prev - 1;
       }
     });
   };
