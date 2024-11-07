@@ -17,7 +17,6 @@
     "isbot": "4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "remix-three": "^0.0.1",
     "three": "^0.159.0"
   },
   "devDependencies": {
