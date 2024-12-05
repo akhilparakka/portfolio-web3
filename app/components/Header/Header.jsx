@@ -1,10 +1,9 @@
 import Sidebar from "../Sidebar/Sidebar";
 import "./Header.css";
 import Azuki from "../../assets/Azuki Logo White.svg";
-// import { useAppKit } from "@reown/appkit/react";
-// import { useAccount } from "wagmi";
-import { useEffect, useState } from "react";
+import { useAccount, useConnect } from "wagmi";
 import { useNavigate } from "@remix-run/react";
+import { useAppKit } from "@reown/appkit/react";
 
 const navbarContents = ["About", "Akhil", "Lore", "More", "Social"];
 
@@ -17,18 +16,9 @@ const navbarRoutes = {
 };
 
 const Header = () => {
-  // const { open } = useAppKit();
-  // const { address } = useAccount();
-  const [isHydrated, setIsHydrated] = useState(false);
+  const { address } = useAccount();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
-
-  const handleConnectClick = () => {
-    // open();
-  };
+  const { open, close } = useAppKit();
 
   const handleNavigate = (item) => {
     const route = navbarRoutes[item];
@@ -57,13 +47,12 @@ const Header = () => {
                 </p>
               ))}
             </div>
-            <div className="connect_wallet" onClick={handleConnectClick}>
-              {/* <p>
-                {isHydrated && address
+            <div className="connect_wallet" onClick={open}>
+              <p>
+                {address
                   ? `${address.slice(0, 6)}...${address.slice(0, 6)}`
                   : "Connect"}
-              </p> */}
-              <p>Connect</p>
+              </p>
             </div>
           </div>
         </div>

@@ -10,6 +10,9 @@
     "@remix-run/express": "^2.12.0",
     "@remix-run/node": "^2.12.0",
     "@remix-run/react": "^2.12.0",
+    "@reown/appkit": "^1.5.3",
+    "@reown/appkit-adapter-wagmi": "^1.5.3",
+    "@tanstack/react-query": "^5.62.2",
     "@vercel/speed-insights": "^1.0.12",
     "cross-env": "^7.0.3",
     "express": "^4.21.0",
@@ -17,7 +20,9 @@
     "isbot": "4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "three": "^0.159.0"
+    "three": "^0.159.0",
+    "viem": "^2.21.54",
+    "wagmi": "^2.13.3"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.12.0",
