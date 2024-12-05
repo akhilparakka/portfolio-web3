@@ -52,6 +52,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .navbar_links {
   width: 35%;
   display: flex;
@@ -83,11 +84,17 @@
   color: black;
 }
 
+.connect_wallet {
+  width: 120px; /* Fixed width */
+  display: flex;
+  justify-content: center;
+}
+
 .connect_wallet > p {
   text-transform: uppercase;
   width: fit-content;
   display: flex;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
   flex-direction: row;
   align-items: center;
@@ -97,6 +104,7 @@
   transition-duration: 50ms;
   cursor: pointer;
   color: white;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .connect_wallet > p:hover {

@@ -1,7 +1,7 @@
 import Sidebar from "../Sidebar/Sidebar";
 import "./Header.css";
 import Azuki from "../../assets/Azuki Logo White.svg";
-import { useAccount, useConnect } from "wagmi";
+import { useAccount } from "wagmi";
 import { useNavigate } from "@remix-run/react";
 import { useAppKit } from "@reown/appkit/react";
 
@@ -27,6 +27,14 @@ const Header = () => {
     }
   };
 
+  const handleConnectClick = () => {
+    if (address) {
+      open({ view: "Account" });
+    } else {
+      open();
+    }
+  };
+
   return (
     <header className="sticky_header">
       <div className="logo">
@@ -47,10 +55,10 @@ const Header = () => {
                 </p>
               ))}
             </div>
-            <div className="connect_wallet" onClick={open}>
+            <div className="connect_wallet" onClick={handleConnectClick}>
               <p>
                 {address
-                  ? `${address.slice(0, 6)}...${address.slice(0, 6)}`
+                  ? `${address.slice(0, 6)}...${address.slice(-4)}`
                   : "Connect"}
               </p>
             </div>

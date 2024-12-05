@@ -1,5 +1,5 @@
 import { createAppKit } from "@reown/appkit/react";
-import { wagmiAdapter, projectId } from "../config";
+import { wagmiAdapter, projectId, networks } from "../config";
 import { mainnet, arbitrum } from "@reown/appkit/networks";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -16,7 +16,7 @@ const metadata = {
 
 const modal = createAppKit({
   adapters: [wagmiAdapter],
-  networks: [mainnet, arbitrum],
+  networks: networks,
   projectId,
   metadata,
   features: {
