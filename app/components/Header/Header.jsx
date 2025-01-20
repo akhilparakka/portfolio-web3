@@ -9,7 +9,7 @@ const navbarContents = ["About", "Akhil", "Lore", "More", "Social"];
 
 const navbarRoutes = {
   About: "/about",
-  Akhil: "/akhil",
+  Akhil: "/hero/test-value",
   Lore: "/lore",
   More: "/more",
   Social: "/social",
@@ -18,7 +18,7 @@ const navbarRoutes = {
 const Header = () => {
   const { address } = useAccount();
   const navigate = useNavigate();
-  const { open, close } = useAppKit();
+  const { open } = useAppKit();
 
   const handleNavigate = (item) => {
     const route = navbarRoutes[item];

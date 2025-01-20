@@ -1,7 +1,5 @@
 import { createAppKit } from "@reown/appkit/react";
 import { wagmiAdapter, projectId, networks } from "../config";
-import { mainnet, arbitrum } from "@reown/appkit/networks";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cookieToInitialState, WagmiProvider } from "wagmi";
 
@@ -14,7 +12,7 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/179229932"],
 };
 
-const modal = createAppKit({
+createAppKit({
   adapters: [wagmiAdapter],
   networks: networks,
   projectId,
@@ -23,6 +21,8 @@ const modal = createAppKit({
     analytics: true,
     email: false,
     socials: false,
+    onramp: false,
+    swaps: false,
   },
   themeMode: "dark",
 });

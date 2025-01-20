@@ -4,37 +4,44 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const carouselImages = [
   {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fwaiting-man.jpg&w=600&q=75",
+    // url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fwaiting-man.jpg&w=600&q=75",
+    url: "https://i.pinimg.com/736x/1d/12/10/1d1210673d4cb650dba75676a4182d32.jpg",
     title: "The Waiting man",
     subheading: "Anthology Series",
   },
   {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fsisters.jpg&w=600&q=75",
+    // url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fsisters.jpg&w=600&q=75",
+    url: "https://i.pinimg.com/736x/78/c0/20/78c020d8032194f0dca8cfae7bab78c9.jpg",
     title: "Sisters",
     subheading: "Story Animation",
   },
   {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fsatoshi.jpg&w=600&q=75",
+    // url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fsatoshi.jpg&w=600&q=75",
+    url: "https://i.pinimg.com/736x/1e/b0/9a/1eb09aa0775b6f4b6052fae1f781ac8b.jpg",
     title: "AZUKI X Satoshi Nakamoto",
     subheading: "Streetwear collab",
   },
   {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fbeanz-101.jpg&w=600&q=75",
+    // url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fbeanz-101.jpg&w=600&q=75",
+    url: "https://i.pinimg.com/736x/dc/c1/74/dcc174975b75765ebcc3bb57f5ebd293.jpg",
     title: "Benz 101",
     subheading: "interactive Lore",
   },
   {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fbrown-x-beanz-winter.jpg&w=600&q=75",
+    // url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fbrown-x-beanz-winter.jpg&w=600&q=75",
+    url: "https://i.pinimg.com/736x/f3/f8/8f/f3f88fd1ed1dde2afb55d05e387a7d5c.jpg",
     title: "Line Friends X Beans",
     subheading: "Physical Collectables",
   },
   {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fbeanz-101.jpg&w=600&q=75",
+    // url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fbeanz-101.jpg&w=600&q=75",
+    url: "https://i.pinimg.com/736x/4d/50/b0/4d50b09ae95fa8d277471994555ca55d.jpg",
     title: "Benz 101",
     subheading: "interactive Lore ipsum",
   },
   {
-    url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fbrown-x-beanz-winter.jpg&w=600&q=75",
+    // url: "https://www.azuki.com/_next/image?url=%2Fhomepage%2FCarousel%2Fbrown-x-beanz-winter.jpg&w=600&q=75",
+    url: "https://i.pinimg.com/736x/91/51/47/915147a0cda7ca17ef6f5e28b311b175.jpg",
     title: "Line Friends X Beans",
     subheading: "Physical Collectables ipsum",
   },
