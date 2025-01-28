@@ -1,0 +1,43 @@
+// db.js
+import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+let connectionString = process.env.CONNECTION_STRING || "";
+
+if (!connectionString) {
+  throw new Error(
+    "No connection string provided. \n\nPlease create a `.env` file in the root of this project. Add a CONNECTION_STRING variable to that file with the connection string to your MongoDB cluster. \nRefer to the README.md file for more information."
+  );
+}
+
+if (connectionString.indexOf("appName") === -1) {
+  connectionString +=
+    connectionString.indexOf("?") > -1
+      ? "&appName=devrel.template.remix|"
+      : "?appName=devrel.template.remix|";
+} else {
+  connectionString = connectionString.replace(
+    /appName\=([a-z0-9]*)/i,
+    (m, p) => `appName=devrel.template.remix|${p}`
+  );
+}
+
+let db;
+
+async function connectToDatabase() {
+  if (db) return db;
+
+  try {
+    const client = new MongoClient(connectionString);
+    await client.connect();
+    db = client.db("sample_mflix");
+    return db;
+  } catch (error) {
+    console.error("Failed to connect to MongoDB:", error);
+    throw error;
+  }
+}
+
+export { connectToDatabase };

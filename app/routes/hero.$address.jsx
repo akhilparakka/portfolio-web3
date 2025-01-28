@@ -1,19 +1,36 @@
-// routes/hero.$test.jsx
-import { useLoaderData, useParams } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
+import { connectToDatabase } from "../../db.js";
 
 export let loader = async ({ params }) => {
-  const testParam = params.address;
-  return { testParam };
+  try {
+    const db = await connectToDatabase();
+    const collection = db.collection("movies");
+
+    const movies = await collection
+      .aggregate([
+        { $sample: { size: 12 } },
+        { $project: { title: 1, _id: 0 } },
+      ])
+      .toArray();
+
+    return { movies, address: params.address };
+  } catch (error) {
+    console.error("Error fetching data from MongoDB:", error);
+    throw new Response("Failed to fetch data", { status: 500 });
+  }
 };
 
 export default function HeroTest() {
-  const data = useLoaderData();
-  const { address } = useParams();
+  const { movies, address } = useLoaderData();
 
   return (
     <div>
-      <h1>Dynamic Route Parameter: {address}</h1>
-      <p>Loaded Data: {data.testParam}</p>
+      <h1>All Movie Names for {address}</h1>
+      <ul>
+        {movies.map((movie, index) => (
+          <li key={index}>{movie.title}</li>
+        ))}
+      </ul>
     </div>
   );
 }
