@@ -24,20 +24,30 @@ if (connectionString.indexOf("appName") === -1) {
   );
 }
 
-let db;
+let dbInstance = null;
+let client = null;
 
 async function connectToDatabase() {
-  if (db) return db;
+  if (dbInstance) return dbInstance;
 
   try {
-    const client = new MongoClient(connectionString);
+    client = new MongoClient(connectionString);
     await client.connect();
-    db = client.db("sample_mflix");
-    return db;
+    dbInstance = client.db("glitch");
+    return dbInstance;
   } catch (error) {
     console.error("Failed to connect to MongoDB:", error);
     throw error;
   }
 }
+
+export function getDb() {
+  if (!dbInstance) {
+    throw new Error("Database not initialized. Please wait for connection.");
+  }
+  return dbInstance;
+}
+
+connectToDatabase().catch(console.error);
 
 export { connectToDatabase };

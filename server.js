@@ -1,20 +1,50 @@
-// server.js
+import { createRequestHandler } from "@remix-run/express";
 import express from "express";
+import { connectToDatabase } from "./db.js";
 
-const viteDevServer =
-  process.env.NODE_ENV === "production"
-    ? null
-    : await import("vite").then((vite) =>
-        vite.createServer({
-          server: { middlewareMode: true },
-        })
-      );
+async function startServer() {
+  try {
+    await connectToDatabase();
+    console.log("✅ MongoDB connected successfully");
 
-const app = express();
-app.use(
-  viteDevServer ? viteDevServer.middlewares : express.static("build/client")
-);
+    const viteDevServer = await import("vite").then((vite) =>
+      vite.createServer({
+        server: {
+          middlewareMode: true,
+          port: 5173,
+        },
+      })
+    );
 
-app.listen(3000, () => {
-  console.log("App listening on http://localhost:3000");
+    const app = express();
+    app.use(viteDevServer.middlewares);
+
+    const build = () =>
+      viteDevServer.ssrLoadModule("virtual:remix/server-build");
+    app.all("*", createRequestHandler({ build }));
+
+    app.listen(5173, () => {
+      // Change port to 5173
+      console.log("🚀 Server listening on http://localhost:5173");
+    });
+  } catch (error) {
+    console.error("❌ Failed to start server:", error);
+    process.exit(1);
+  }
+}
+
+process.on("SIGINT", async () => {
+  console.log("Shutting down server...");
+  try {
+    const { client } = await import("./db.js");
+    if (client) {
+      await client.close();
+      console.log("MongoDB connection closed.");
+    }
+  } catch (error) {
+    console.error("Error during shutdown:", error);
+  }
+  process.exit(0);
 });
+
+startServer();

@@ -1,19 +1,30 @@
 import { useLoaderData } from "@remix-run/react";
-import { connectToDatabase } from "../../db.js";
+import { getDb } from "../../db";
+import Header from "../components/Header/Header";
+import "../styles/hero.css";
 
-export let loader = async ({ params }) => {
+export let loader = async () => {
   try {
-    const db = await connectToDatabase();
-    const collection = db.collection("movies");
+    const db = getDb();
+    const collection = db.collection("celebs");
 
-    const movies = await collection
-      .aggregate([
-        { $sample: { size: 12 } },
-        { $project: { title: 1, _id: 0 } },
-      ])
+    const celebrities = await collection
+      .find(
+        {},
+        {
+          projection: {
+            name: 1,
+            description: 1,
+            mainImage: 1,
+            heroImage: 1,
+            _id: 0,
+            imageGallery: 1,
+          },
+        }
+      )
       .toArray();
 
-    return { movies, address: params.address };
+    return { celebrities };
   } catch (error) {
     console.error("Error fetching data from MongoDB:", error);
     throw new Response("Failed to fetch data", { status: 500 });
@@ -21,14 +32,25 @@ export let loader = async ({ params }) => {
 };
 
 export default function HeroTest() {
-  const { movies, address } = useLoaderData();
+  const { celebrities } = useLoaderData();
 
   return (
-    <div>
-      <h1>All Movie Names for {address}</h1>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "black",
+      }}
+    >
+      <Header />
+      <h1>All Artists</h1>
       <ul>
-        {movies.map((movie, index) => (
-          <li key={index}>{movie.title}</li>
+        {celebrities.map((celebrity, index) => (
+          <li style={{ color: "white" }} key={index}>
+            {celebrity.name}
+          </li>
         ))}
       </ul>
     </div>

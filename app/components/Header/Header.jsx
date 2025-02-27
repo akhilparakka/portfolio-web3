@@ -37,7 +37,7 @@ const Header = () => {
 
   return (
     <header className="sticky_header">
-      <div className="logo">
+      <div className="logo" onClick={() => navigate("/")}>
         <img src={Azuki} alt="" width={"80px"} />
       </div>
       <div className="header_content">
