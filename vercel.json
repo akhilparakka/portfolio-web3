@@ -1,0 +1,6 @@
+{
+  "framework": null,
+  "dev": {
+    "command": "npm run dev"
+  }
+}
