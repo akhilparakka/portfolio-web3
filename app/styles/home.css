@@ -1,11 +1,26 @@
+@font-face {
+  font-family: "cunia";
+  src: url("../assets/fonts/Cunia.ttf") format("truetype");
+  font-style: normal;
+  font-size: 500px;
+}
+
+@font-face {
+  font-family: "satoshi";
+  src: url("../assets/fonts/Satoshi-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-size: 500px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  letter-spacing: 0.1rem;
 }
 
 body {
-  font-family: "Work Sans", sans-serif;
+  font-family: "cunia", sans-serif;
 }
 
 .home {

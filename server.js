@@ -24,7 +24,6 @@ async function startServer() {
     app.all("*", createRequestHandler({ build }));
 
     app.listen(5173, () => {
-      // Change port to 5173
       console.log("🚀 Server listening on http://localhost:5173");
     });
   } catch (error) {

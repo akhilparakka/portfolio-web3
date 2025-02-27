@@ -45,6 +45,8 @@
 }
 
 .heading_wrapper {
+  font-family: "satoshi";
+  font-weight: 500;
   display: flex;
   position: absolute;
   top: 0;
