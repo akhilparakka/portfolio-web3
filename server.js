@@ -1,9 +1,6 @@
 import { createRequestHandler } from "@remix-run/express";
 import express from "express";
 import { connectToDatabase } from "./db.js";
-import path from "path";
-
-const __dirname = path.resolve();
 
 async function startServer() {
   try {
@@ -25,12 +22,9 @@ async function startServer() {
     const build = () =>
       viteDevServer.ssrLoadModule("virtual:remix/server-build");
     app.all("*", createRequestHandler({ build }));
-    app.use(
-      "/.well-known",
-      express.static(path.join(__dirname, ".well-known"))
-    );
 
     app.listen(5173, () => {
+      // Change port to 5173
       console.log("🚀 Server listening on http://localhost:5173");
     });
   } catch (error) {
