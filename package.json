@@ -13,6 +13,7 @@
     "@reown/appkit": "^1.5.3",
     "@reown/appkit-adapter-wagmi": "^1.5.3",
     "@tanstack/react-query": "^5.62.2",
+    "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.0.12",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",

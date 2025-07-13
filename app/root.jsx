@@ -7,6 +7,7 @@ import {
 } from "@remix-run/react";
 import { SpeedInsights } from "@vercel/speed-insights/remix";
 import { AppKitProvider } from "./context";
+import { Analytics } from "@vercel/analytics/remix";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Links />
       </head>
       <AppKitProvider>
+        <Analytics />
         <body>
           <Outlet />
           <ScrollRestoration />
