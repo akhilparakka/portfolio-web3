@@ -18,6 +18,7 @@ export default function App() {
         <Links />
       </head>
       <AppKitProvider>
+        {/* Added Analytics */}
         <Analytics />
         <body>
           <Outlet />
