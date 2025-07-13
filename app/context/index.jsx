@@ -26,7 +26,6 @@ createAppKit({
   },
   themeMode: "dark",
 });
-//
 
 export function AppKitProvider({ children }) {
   return (
